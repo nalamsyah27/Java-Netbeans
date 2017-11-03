@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a5b1ae3e-0574-45fd-aadd-b08a504be4b5">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="No" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select * from detailjual where NoTransaksi =$P{No}]]>
+	</queryString>
+	<field name="NoTransaksi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="KodeBarang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NamaBarang" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="HargaJual" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Qty" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Total" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="TTB" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{Total}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="553" height="95" backcolor="#000000" uuid="9d7544d3-0e2c-4b5b-9e28-55203eb58c7c"/>
+				<staticText>
+					<reportElement style="Title" x="0" y="0" width="173" height="20" uuid="9bf35a1e-1340-486d-9a8c-db4aa7825ad9"/>
+					<textElement>
+						<font fontName="Vijaya" size="14" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[JNF.ELEKTRONIK KOMPUTER]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="SubTitle" x="157" y="66" width="249" height="29" forecolor="#FFFFFF" uuid="db03a87e-841e-4eaf-a319-73212dfbbef1"/>
+					<textElement>
+						<font fontName="Vijaya" size="22" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Struk Transaksi Penjualan]]></text>
+				</staticText>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement x="406" y="0" width="144" height="20" forecolor="#FFFFFF" uuid="af47d939-6504-4afb-8291-11cbf228c1f7"/>
+					<textElement textAlignment="Right">
+						<font fontName="Vijaya" size="12"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="2" y="20" width="125" height="20" forecolor="#FFFFFF" uuid="8909447f-b669-46a2-81ac-86a52906cca8"/>
+					<textElement>
+						<font fontName="Vijaya" size="9"/>
+					</textElement>
+					<text><![CDATA[Jln Pettarani V No.21 Telp.(0411) 279999]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement mode="Opaque" x="0" y="100" width="553" height="32" forecolor="#000000" backcolor="#CC0000" uuid="e29f6b3e-3906-44a1-b77e-7f8822fa38c0"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="93" y="12" width="92" height="18" uuid="19586062-8e22-4d13-9bd1-73de7c1fe9b0"/>
+					<textElement>
+						<font fontName="Vijaya" size="14" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NoTransaksi}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="0" y="12" width="92" height="18" forecolor="#000000" uuid="cecef153-e2fe-46fd-8dcb-885f50f98d65"/>
+					<textElement>
+						<font fontName="Vijaya" isBold="true"/>
+					</textElement>
+					<text><![CDATA[NO TRANSAKSI :]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="2" y="7" width="44" height="18" forecolor="#000000" uuid="2a26ed82-cfed-43d6-aa89-ca3928b6c2dd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KODE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="46" y="7" width="139" height="18" forecolor="#000000" uuid="bb7ab6e5-f2a7-4f0b-bd18-729a6dbbdf5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA BARANG]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="185" y="7" width="92" height="18" forecolor="#000000" uuid="6344bc46-bdc7-41a4-a8cd-e739d45b97ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HARGA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="277" y="7" width="56" height="18" forecolor="#000000" uuid="080742c8-77b9-4f1f-8bcf-e8ef17f9c557"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" isBold="true"/>
+				</textElement>
+				<text><![CDATA[QTY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="333" y="7" width="92" height="18" forecolor="#000000" uuid="8292b863-6521-4df0-bf2a-06a0582567be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUB TOTAL]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="18" uuid="b5d66004-5c04-420e-9fae-bfd2858c63b4"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="2" y="0" width="44" height="18" uuid="8f511b38-779e-446e-879c-d56fcdaa7458"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Vijaya" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{KodeBarang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="46" y="0" width="139" height="18" uuid="98790dd9-f5c8-4963-98b6-a96a2ffeed3f"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Vijaya" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{NamaBarang}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="185" y="0" width="92" height="18" uuid="70d63b5f-4c1b-4e63-a3c2-d5b28cdf31c7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Vijaya" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{HargaJual}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="277" y="0" width="56" height="18" uuid="b1b0cbe1-1040-4b8e-95bc-11b0ed270281"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Vijaya" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Qty}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Detail" positionType="Float" x="333" y="0" width="92" height="18" uuid="9aecc198-504d-42ba-9005-3a472f124e69"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Vijaya" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="c721e463-90d8-47f9-93da-c79ec15eb73e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="1" width="555" height="24" forecolor="#D0B48E" backcolor="#000000" uuid="a77df98e-1fa0-4aa2-8e66-5995dfdf2857"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="513" y="0" width="40" height="20" forecolor="#FFFFFF" uuid="8d6b59c3-6cf3-4e07-a865-7c1431d4ea7c"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Vijaya" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="433" y="0" width="80" height="20" forecolor="#FFFFFF" uuid="922ef053-bd95-4b82-baef-22a5562b4e12"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Vijaya" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="1" width="197" height="20" forecolor="#FFFFFF" uuid="ad49eccd-7a98-4fc9-8047-fee0f2b0b65e"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Vijaya" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="19" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="333" height="18" forecolor="#000000" uuid="9139d93b-cf51-4ec4-bb88-6fc0b2c6625a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL BAYAR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="333" y="0" width="92" height="18" uuid="745f2c82-d2b7-4106-bdca-fc509f3d286e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Vijaya" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TTB}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="18" width="553" height="1" uuid="99c7b771-f912-4fab-b88a-fba0dda1eba2"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>
